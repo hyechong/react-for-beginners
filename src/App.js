@@ -16,7 +16,9 @@ function App() {
     setToDo('');
     setToDos((currentArray) => [toDo, ...currentArray]);
   };
-  console.log(toDos);
+  const deleteBtn = (index) => {
+    setToDos(toDos.filter((item, todoIndex) => index !== todoIndex));
+  };
   return (
     <div>
       <h1>My To Dos ({toDos.length})</h1>
@@ -29,6 +31,15 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => (
+          <li key={index}>
+            {item}
+            <button onClick={() => deleteBtn(index)}>❌</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
