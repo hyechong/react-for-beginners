@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Detail from './routes/Detail';
+import Home from './routes/Home';
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    fetch(`https://yts.mx/api
-    https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`)
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-  }, []);
-  return <div>{loading ? <h1>Loading...</h1> : null}</div>;
-}
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/movie/:id' element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
+  );
+} // react-router-dom의 component들은 url이 바뀌면 어떤 걸 보여줄지 결정한다.
 
 export default App;
