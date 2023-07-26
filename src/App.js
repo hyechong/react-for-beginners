@@ -5,7 +5,7 @@ import Home from './routes/Home';
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename='/react-for-beginners'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/movie/:id' element={<Detail />} />
